@@ -5,6 +5,7 @@ from urllib.error import HTTPError, URLError
 from urllib.parse import urljoin, urlparse, urlunparse
 import argparse
 import random
+import sys
 
 
 def crawl(website):
@@ -53,6 +54,7 @@ if __name__ == "__main__":
 
     if broken_links:
         print("💥 Broken links make me sad 😢")
+        sys.exit(1)
     else:
         animals = (
             ("🐵", "Monkey"),
@@ -100,4 +102,9 @@ if __name__ == "__main__":
             ("🦔", "Hedgehog"),
         )
         animal = random.choice(animals)
-        print("🎆 No broken links! As a reward here's a {}: {}".format(animal[1].lower(), animal[0]))
+        print(
+            "🎆 No broken links! As a reward here's a {}: {}".format(
+                animal[1].lower(), animal[0]
+            )
+        )
+        sys.exit(0)
