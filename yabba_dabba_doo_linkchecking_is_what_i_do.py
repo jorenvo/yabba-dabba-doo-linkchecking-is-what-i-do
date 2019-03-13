@@ -35,7 +35,7 @@ def crawl(website):
             for link in soup.find_all("a"):
                 href = link.get("href")
                 if href:
-                    href = urljoin(redirected_website, link.get("href"))
+                    href = urljoin(redirected_website, href)
                     href = urlunparse(urlparse(href)[:-1] + ("",))  # strip query string
                     if href not in seen_links:
                         links_to_crawl.append(href)
